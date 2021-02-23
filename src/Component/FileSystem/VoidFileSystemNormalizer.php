@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -27,7 +28,7 @@ class VoidFileSystemNormalizer implements FileSystemNormalizerInterface
     public function normalizeFromFile(
         FileSystemInterface $fileSystem,
         string $filename
-    ) {
+    ): mixed {
         throw new CouldNotNormalizeException(
             $filename,
             new FileException($filename, 'Using void normalizer.')
@@ -48,7 +49,7 @@ class VoidFileSystemNormalizer implements FileSystemNormalizerInterface
     public function denormalizeToFile(
         FileSystemInterface $fileSystem,
         string $filename,
-        $value
+        mixed $value
     ): void {
         throw new CouldNotDenormalizeException(
             $filename,

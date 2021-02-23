@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -24,28 +25,28 @@ class FileIterable implements FileIterableInterface
      *
      * @var string
      */
-    private $mode;
+    private string $mode;
 
     /**
      * The increment of the iterator.
      *
      * @var int
      */
-    private $increment = 0;
+    private int $increment = 0;
 
     /**
      * The size in bytes of the readable chunks.
      *
      * @var int
      */
-    private $chunkSize;
+    private int $chunkSize;
 
     /**
      * Contains the map for lines and their pointer position.
      *
      * @var array
      */
-    private $lineMap;
+    private array $lineMap;
 
     /**
      * Constructor
@@ -107,13 +108,13 @@ class FileIterable implements FileIterableInterface
     /**
      * Checks if the offset can be read.
      *
-     * @param  int  $offset
+     * @param mixed $offset
      *
      * @return bool
      *
      * @throws InvalidArgumentException When the offset is not an integer value.
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         if (!is_int($offset)) {
             throw new InvalidArgumentException(
@@ -134,6 +135,8 @@ class FileIterable implements FileIterableInterface
      * Maps all pointer positions to line numbers.
      *
      * @param int $offset
+     *
+     * @return void
      */
     private function mapToLine(int $offset): void
     {
@@ -159,13 +162,13 @@ class FileIterable implements FileIterableInterface
     /**
      * Retrieves the value at the offset.
      *
-     * @param int $offset
+     * @param mixed $offset
      *
      * @return mixed
      *
      * @throws InvalidArgumentException When the offset is not an integer value.
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         if (!is_int($offset)) {
             throw new InvalidArgumentException(
@@ -369,15 +372,15 @@ class FileIterable implements FileIterableInterface
     /**
      * Replaces a chunk.
      *
-     * @param int         $offset
-     * @param string|null $value
+     * @param mixed $offset
+     * @param mixed $value
      *
      * @return void
      *
      * @throws InvalidArgumentException When either the offset is not an integer value.
      *                                  Or when the value is not of type string or null.
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (!is_int($offset) && !is_null($offset)) {
             throw new InvalidArgumentException(
@@ -409,13 +412,13 @@ class FileIterable implements FileIterableInterface
     /**
      * Removes a chunk.
      *
-     * @param int $offset
+     * @param mixed $offset
      *
      * @return void
      *
      * @throws InvalidArgumentException When the offset is not an integer value.
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         if (!is_int($offset)) {
             throw new InvalidArgumentException(
@@ -452,7 +455,7 @@ class FileIterable implements FileIterableInterface
      *
      * @return mixed
      */
-    public function current()
+    public function current(): mixed
     {
         $this->ensureIteratorPosition();
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -22,21 +23,21 @@ class FileSystemNormalizer implements FileSystemNormalizerInterface
      *
      * @var CodecRegistryInterface
      */
-    private $codecRegistry;
+    private CodecRegistryInterface $codecRegistry;
 
     /**
      * Contains the translator for translating an extension to a MIME type.
      *
      * @var TranslatorInterface
      */
-    private $extensionToMime;
+    private TranslatorInterface $extensionToMime;
 
     /**
      * Contains the translator for translating a MIME type to a codec.
      *
      * @var TranslatorInterface
      */
-    private $mimeToCodec;
+    private TranslatorInterface $mimeToCodec;
 
     /**
      * Constructor.
@@ -68,10 +69,12 @@ class FileSystemNormalizer implements FileSystemNormalizerInterface
     public function normalizeFromFile(
         FileSystemInterface $fileSystem,
         string $filename
-    ) {
+    ): mixed {
         try {
-            if ($fileSystem->isFile($filename)
-            && !$fileSystem->isDirectory($filename)) {
+            if (
+                $fileSystem->isFile($filename)
+                && !$fileSystem->isDirectory($filename)
+            ) {
                 return $this->codecRegistry->getDecoder(
                     $this->extensionToCodec(
                         $fileSystem
@@ -101,7 +104,7 @@ class FileSystemNormalizer implements FileSystemNormalizerInterface
     public function denormalizeToFile(
         FileSystemInterface $fileSystem,
         string $filename,
-        $value
+        mixed $value
     ): void {
         try {
             $info = pathinfo($filename);

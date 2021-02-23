@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -14,12 +15,12 @@ interface FileIterableInterface extends Iterator, ArrayAccess
     /**
      * Reads the file in chunks of set bytes.
      */
-    const MODE_CHUNK = 'chunk';
+    public const MODE_CHUNK = 'chunk';
 
     /**
      * Reads the file per line.
      */
-    const MODE_LINE  = 'line';
+    public const MODE_LINE  = 'line';
 
     /**
      * Closes the file.

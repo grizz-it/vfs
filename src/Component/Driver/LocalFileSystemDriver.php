@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -20,7 +21,7 @@ class LocalFileSystemDriver implements FileSystemDriverInterface
      *
      * @var FileSystemNormalizerInterface
      */
-    private $fileSystemNormalizer;
+    private FileSystemNormalizerInterface $fileSystemNormalizer;
 
     /**
      * Constructor.

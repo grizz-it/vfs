@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -13,6 +14,12 @@ use Exception;
  */
 class FileException extends Exception
 {
+    /**
+     * Constructor.
+     *
+     * @param string $filename
+     * @param string $message
+     */
     public function __construct(string $filename, string $message)
     {
         parent::__construct(

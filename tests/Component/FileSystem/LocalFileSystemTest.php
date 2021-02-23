@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -29,7 +30,7 @@ class LocalFileSystemTest extends TestCase
      */
     public function testConstruct(): LocalFileSystem
     {
-        $subject = new LocalFileSystem(__DIR__.'/../../test-filesystem');
+        $subject = new LocalFileSystem(__DIR__ . '/../../test-filesystem');
         $this->assertInstanceOf(LocalFileSystem::class, $subject);
 
         return $subject;
@@ -166,7 +167,7 @@ class LocalFileSystemTest extends TestCase
      */
     public function testRealPath(LocalFileSystem $subject): void
     {
-        $this->assertRegexp(
+        $this->assertMatchesRegularExpression(
             '/test-filesystem\/foo.txt/',
             $subject->realpath('foo.txt')
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -33,6 +34,6 @@ interface FileSystemNormalizerInterface
     public function denormalizeToFile(
         FileSystemInterface $fileSystem,
         string $filename,
-        $value
+        mixed $value
     ): void;
 }

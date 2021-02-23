@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -18,7 +19,7 @@ use GrizzIt\Vfs\Exception\InaccessibleFileException;
 class LocalFileSystem implements FileSystemInterface
 {
     /** @var string */
-    private $root;
+    private string $root;
 
     /**
      * Constructor
